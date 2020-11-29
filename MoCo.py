@@ -16,6 +16,7 @@ from tqdm import tqdm
 from dataset import dataset
 import os
 import cv2
+import argparse
 cpu = torch.device("cpu")
 gpu = torch.device('cuda')
 
@@ -134,6 +135,7 @@ if __name__ == '__main__':
     """ model definition """
     model = MoCo(args.dim)
     model.to(gpu)
+    print(model)
     model.train()
     creterion = nn.CrossEntropyLoss()
     optimizer = torch.optim.SGD(model.parameters(), lr=0.01, weight_decay=5e-4)
